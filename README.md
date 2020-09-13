@@ -16,7 +16,7 @@ Draft 2:
 * Misc bug fixes
 
 Link to live site:
-https://ddemosi.github.io/web_project_10/
+https://ddemosi.github.io/around-react/
 
 Created with ReactJS
 
