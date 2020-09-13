@@ -1,11 +1,16 @@
 import React from 'react';
 
 function Card(props) {
+
+    function handleClick() {
+        props.handleCardClick(props.cardLink, props.cardName);
+    }
+
     return(
         <li className="element">
             <button className="element__delete"></button>
             <input type="hidden" className="element__id" value=""/>
-            <div className="element__image" onClick={props.handleCardClick} style={{ backgroundImage: `url(${props.cardLink})`
+            <div className="element__image" onClick={handleClick} style={{ backgroundImage: `url(${props.cardLink})`
          }}>   
             </div>
             <div className="element__title-container">

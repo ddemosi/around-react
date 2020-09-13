@@ -15,7 +15,6 @@ class Api {
       })
       .then ((res) => {
         return this._checkResponse(res)})
-      .catch(err => console.log(err))
   }
 
   getCardList() {
@@ -23,7 +22,6 @@ class Api {
       headers: this._auth
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 
   changeProfileInfo(data) {
@@ -36,7 +34,6 @@ class Api {
       })
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 
   addCard(data) {
@@ -49,7 +46,6 @@ class Api {
       })
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 
   deleteCard(cardID) {
@@ -58,7 +54,6 @@ class Api {
       headers: this._auth
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 
   cardLike(cardID) {
@@ -67,7 +62,6 @@ class Api {
       headers: this._auth
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 
   cardUnlike(cardID) {
@@ -76,7 +70,6 @@ class Api {
       headers: this._auth
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 
   updateAvatar(url) {
@@ -88,7 +81,6 @@ class Api {
       })
     })
     .then ( res => this._checkResponse(res))
-    .catch( err => console.log(err))
   }
 }
 
