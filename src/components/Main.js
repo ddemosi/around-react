@@ -112,7 +112,7 @@ function Main(props) {
                     <button type="button" className="form__save-button form__save-button_confirm form-width">Yes</button>
                 </PopupWithForm>
 
-                Update Popup form
+                {/* Update Popup form */}
                 <ImagePopup isOpen={props.selectedCardIsOpen} onClose={props.onClose} name={props.selectedCardName} link={props.selectedCardLink} />
             </section>
         </main>
