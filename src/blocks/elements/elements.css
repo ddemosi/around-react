@@ -1,0 +1,6 @@
+@import url('__grid-container/elements__grid-container.css');
+
+.elements {
+    width: 100%;
+    background-color: #000;
+}

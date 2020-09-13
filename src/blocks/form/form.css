@@ -1,0 +1,31 @@
+@import url('__exit/form__exit.css');
+@import url('__save-button/form__save-button.css');
+@import url('__text-field/form__text-field.css');
+@import url('__title/form__title.css');
+@import url('__error/form__error.css');
+@import url('__text-field-wrapper/form__text-field-wrapper.css');
+
+.form {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .6s, opacity 0.5s linear;
+    display: flex;
+    flex-direction: column;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    max-width: 430px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .form {
+        width: calc(100% - 40px * 2);
+    }
+}

@@ -1,0 +1,10 @@
+.width {
+    margin: 0 auto;
+    max-width: 882px;
+}
+
+@media screen and (max-width: 882px) {
+    .width {
+        max-width: calc(100% - 19px * 2);
+    }
+}

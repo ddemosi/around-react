@@ -1,0 +1,14 @@
+@import url('_popup/element__exit_popup_active.css');
+
+.element__exit {
+    background-image: url('../../../images/Close\ Icon.svg');
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    display: none;
+}

@@ -1,0 +1,6 @@
+.modal_display_visible {
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(0,0,0, 0.5);
+    transition-delay: 0s;
+}

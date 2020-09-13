@@ -1,0 +1,6 @@
+.image-modal__image {
+    max-width: 75vw;
+    max-height: 75vh;
+    position: relative;
+    border: none;
+}

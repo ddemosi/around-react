@@ -1,0 +1,11 @@
+.form-width {
+    max-width: calc(100% - 36px * 2);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .form-width {
+        max-width: calc(100% - 20px * 2);
+    }
+}

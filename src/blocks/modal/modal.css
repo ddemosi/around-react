@@ -1,0 +1,11 @@
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: visibility 0s .6s, opacity .5s linear;
+}

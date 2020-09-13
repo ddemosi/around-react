@@ -1,0 +1,8 @@
+.profile__overlay-image {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

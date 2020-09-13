@@ -1,0 +1,18 @@
+.form__exit {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -30px;
+    right: -30px;
+    background-image: url('../../../images/Close-Icon.svg');
+    background-size: contain;
+    z-index: -3;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.form__exit:hover {
+    opacity: 0.6;
+}

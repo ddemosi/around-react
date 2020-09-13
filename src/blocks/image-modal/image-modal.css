@@ -1,0 +1,15 @@
+@import url('__exit/image-modal__exit.css');
+@import url('__image/image-modal__image.css');
+@import url('__subtitle/image-modal__subtitle.css');
+@import url('__container/image-modal__container.css');
+
+.image-modal {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .6s, opacity 0.5s linear;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15%;
+    z-index: 2;
+}

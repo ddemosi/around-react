@@ -1,0 +1,11 @@
+.profile__avatar-container {
+    position: relative;
+}
+
+.profile__avatar-container:hover .profile__overlay {
+    opacity: .8;
+}
+
+/* .profile__avatar-container:hover .profile__overlay-image {
+    opacity: 1;
+} */

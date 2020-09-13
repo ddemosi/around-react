@@ -1,0 +1,18 @@
+.element__delete {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    height: 19px;
+    width: 18px;
+    background-image: url('../../../images/trash-can.svg');
+    background-repeat: none;
+    object-fit: cover;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.element__delete:hover {
+    opacity: 0.6;
+}
