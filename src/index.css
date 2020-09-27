@@ -17,3 +17,4 @@
 @import url('./blocks/image-modal/_visible/image-modal_visible.css');
 @import url('./blocks/modal/_display/modal_display_visible.css');
 @import url('./blocks/form/__save-button/_disabled/form__save-button_disabled.css');
+@import url('./blocks/element/__delete/_visible/element__delete_visible.css');

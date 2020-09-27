@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../index.css';
 
 import Header from './Header.js';
@@ -6,8 +6,13 @@ import Main from './Main.js';
 import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
 import ImagePopup from './ImagePopup.js';
+import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
+import {api} from '../utils/Api.js'
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 function App() {
+    const [currentUser, setCurrentInfo] = useState("")
     const [editAvatarIsOpen, toggleEditAvatar] = useState(false);
     const [editProfileIsOpen, toggleEditProfile] = useState(false);
     const [addCardIsOpen, toggleAddCard] = useState(false);
@@ -17,11 +22,13 @@ function App() {
         name: "",
         isOpen: false
     });
-    const [userInfo, setUserInfo] = useState({
-        username: "",
-        userDescription: "",
-        userAvatar: ""
-    })
+
+    function handleNameChange(value) {
+        setCurrentInfo({...currentUser, name: value});
+    }
+    function handleDescriptionChange(value) {
+        setCurrentInfo({...currentUser, about: value});
+    }
     
     function handleEditAvatarClick(e) {
         toggleEditAvatar(true);
@@ -37,6 +44,34 @@ function App() {
 
     function handleCardClick(link, name) {
         setSelectedCard({link: link, name: name, isOpen: true});
+    }
+
+    function onUpdateUser(name, description) {
+        api.changeProfileInfo({name: name, about: description}).then(() => {
+            getCurrentUserInfo();
+        });
+        
+        toggleEditProfile(false);
+    }
+
+    function onUpdateAvatar(link) {
+        api.updateAvatar(link).then(() => {
+            getCurrentUserInfo();
+        });
+        
+        toggleEditAvatar(false);
+    }
+
+    function getCurrentUserInfo() {
+        api.getUserInfo().then((res) => {
+            setCurrentInfo({
+                name: res.name,
+                about: res.about,
+                avatar: res.avatar,
+                _id: res._id
+            });
+        })
+        .catch(err => console.log(err));
     }
 
     function closeAllPopups(e) {
@@ -56,14 +91,18 @@ function App() {
             return false
         }
     }
+
+    useEffect(() => {
+        getCurrentUserInfo();
+    }, [])
+
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="App">
     <div className="page">
         <Header/>
         <Main
         selectedCard={selectedCard}
-        userInfo={userInfo}
-        setUserInfo={setUserInfo}
         handleEditAvatarClick={handleEditAvatarClick}
         handleEditProfileClick={handleEditProfileClick}
         handleAddCardClick={handleAddCardClick}
@@ -75,27 +114,11 @@ function App() {
                 
                 {/* Update Avatar form */}
 
-                <PopupWithForm name={"update-avatar"} title={"Edit Avatar"} isOpen={editAvatarIsOpen} onClose={closeAllPopups} >
-                <div className="form__text-field-wrapper form-width">
-                        <input id="avatar-link" className="form__text-field form__input form__input_avatar-link" placeholder="Image URL" type="url"
-                        defaultValue="" minLength="1" />
-                        <span id="avatar-link-error" className="form__error"></span>
-                    </div>
-                    <button type="submit" className="form__save-button form__save-button_avatar-link form-width form__save-button_disabled" disabled>Save</button>
-                </PopupWithForm>
+                <EditAvatarPopup onUpdateAvatar={onUpdateAvatar} isOpen={editAvatarIsOpen} onClose={closeAllPopups} />
 
                 {/* Edit profile form */}
-                <PopupWithForm name={"edit-profile"} title={"Edit Profile"} isOpen={editProfileIsOpen} onClose={closeAllPopups} >
-                <div className="form__text-field-wrapper form-width">
-                        <input id="profile-name" className="form__text-field form__input form__input_name" placeholder="Name" type="text" defaultValue={userInfo.username} minLength="2" maxLength="40" required />
-                        <span id="profile-name-error" className="form__error"></span>
-                    </div>
-                    <div className="form__text-field-wrapper form-width">
-                        <input id="profile-about" className="form__text-field form__input form__input_about" placeholder="About me" type="text" defaultValue={userInfo.userDescription} minLength="2" maxLength="200" required />
-                        <span id="profile-about-error" className="form__error"></span>
-                    </div>
-                    <button type="submit" className="form__save-button form__save-button_profile form-width form__save-button_disabled" disabled>Save</button>
-                </PopupWithForm>
+                <EditProfilePopup onUpdateUser={onUpdateUser} handleNameChange={handleNameChange} handleDescriptionChange={handleDescriptionChange} 
+                isOpen={editProfileIsOpen} onClose={closeAllPopups} />
 
                 {/* Add Card form */}
                 <PopupWithForm name={"card"} title={"New Place"} isOpen={addCardIsOpen} onClose={closeAllPopups}>
@@ -124,6 +147,7 @@ function App() {
         
     </div>
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 

@@ -1,19 +1,12 @@
-# Around the U.S. Project AROUND-REACT (Project 10)!
+# Around the U.S. Project AROUND-REACT (Project 11)!
 --------------------------------
 ### A "not as simple as it once was" ReactJS project for the Web Dev program at Practicum by Yandex
 
 Mostly there:
-* Website is now partially ported to react. Viewable, but not very interactive yet.
-* State management is a mess, lol. It's going to take me a bit to figure it out.
-* Getting there, slowly but surely!
 
-Draft 2:
-* Cleaned up the state variables. Significantly less code being passed between components.
-* Removed pages folder
-* Moved popups to App.js
-* Moved App component to the components folder
-* Deleted public from the .gitignore file, lol
-* Misc bug fixes
+TODOS: 
+* PUT requests are only going through when the like value is 0. Not really sure why.
+
 
 Link to live site:
 https://ddemosi.github.io/around-react/

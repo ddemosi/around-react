@@ -56,20 +56,20 @@ class Api {
     .then ( res => this._checkResponse(res))
   }
 
-  cardLike(cardID) {
-    return fetch(`${this._apiEndpoint}/cards/likes/${cardID}`, {
-      method: "PUT",
-      headers: this._auth
-    })
-    .then ( res => this._checkResponse(res))
-  }
-
-  cardUnlike(cardID) {
-    return fetch(`${this._apiEndpoint}/cards/likes/${cardID}`, {
-      method: "DELETE",
-      headers: this._auth
-    })
-    .then ( res => this._checkResponse(res))
+  changeLikeCardStatus(cardID, likeStatus) {
+    if(likeStatus === true) {
+      return fetch(`${this._apiEndpoint}/cards/likes/${cardID}`, {
+        method: "PUT",
+        headers: this._auth
+      })
+      .then ( res => this._checkResponse(res))
+    } else {
+      return fetch(`${this._apiEndpoint}/cards/likes/${cardID}`, {
+        method: "DELETE",
+        headers: this._auth
+      })
+      .then ( res => this._checkResponse(res))
+    }
   }
 
   updateAvatar(url) {
