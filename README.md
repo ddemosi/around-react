@@ -4,9 +4,9 @@
 
 Mostly there:
 
-TODOS: 
-* PUT requests are only going through when the like value is 0. Not really sure why.
-
+* Couldn't figure out how to get the form validation set up. I didn't see it on the project requirement checklist, so I didn't finish adding it. Weird errors between JSX and vanilla, I think.
+* I did get the "confirm delete popup" working, as well as the loading icons.
+* Needs more cowbell
 
 Link to live site:
 https://ddemosi.github.io/around-react/

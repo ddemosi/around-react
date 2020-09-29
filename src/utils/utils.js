@@ -7,17 +7,17 @@
 // //Selectors for Add modal
 // const nameInput = document.querySelector('.form__input_image-title');
 // const linkInput = document.querySelector('.form__input_image-link');
-// const addCard = modal.querySelector('.form_card');
+// const addCard = document.querySelector('.form_card');
 // const addButton = document.querySelector('.profile__add-button');
 
 // //Selectors for edit modal
-// const editProfile = modal.querySelector('.form_edit-profile');
+// const editProfile = document.querySelector('.form_edit-profile');
 // const editButton = document.querySelector('.profile__edit-button');
 // const editNameInput = document.querySelector('.form__input_name');
 // const editAboutInput = document.querySelector('.form__input_about');
 
 // //Selectors for Avatar modal
-// const avatarUpdateForm = modal.querySelector('.form_update-avatar');
+// const avatarUpdateForm = document.querySelector('.form_update-avatar');
 // const editAvatar = document.querySelector('.profile__avatar-container');
 // const avatarElement = document.querySelector('.profile__avatar');
 

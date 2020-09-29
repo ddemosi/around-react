@@ -25,7 +25,7 @@ function EditAvatarPopup(props) {
                 defaultValue={currentUser.avatar} minLength="1" />
                 <span id="avatar-link-error" className="form__error"></span>
             </div>
-            <button type="submit" className="form__save-button form__save-button_avatar-link form-width form__save-button_disabled">Save</button>
+            <button type="submit" className="form__save-button form__save-button_avatar-link form-width">{props.isSaving ? 'Saving...' : 'Save'}</button>
         </PopupWithForm>
     )
 }

@@ -46,7 +46,7 @@ function EditProfilePopup(props) {
                 <input ref={aboutRef} onChange={onDescriptionChange} id="profile-about" className="form__text-field form__input form__input_about" placeholder="About me" type="text" defaultValue={description} minLength="2" maxLength="200" required />
                 <span id="profile-about-error" className="form__error"></span>
             </div>
-            <button type="submit" className="form__save-button form__save-button_profile form-width form__save-button_disabled">Save</button>
+            <button type="submit" className="form__save-button form__save-button_profile form-width">{props.isSaving ? 'Saving...' : 'Save'}</button>
         </PopupWithForm>
         )
 }
