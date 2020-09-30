@@ -21,6 +21,10 @@ DRAFT 3
 * Removed unnecessary code from EditProfile
 * Added catch blocks to promises
 
+DRAFT 4
+
+* Looks like I forgot to set the like handler response to the proper naming convention. Everything looks good after the fixing that!
+
 Link to live site:
 https://ddemosi.github.io/around-react/
 

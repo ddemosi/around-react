@@ -106,9 +106,16 @@ function App() {
     }
     function handleCardLike(cardLikes, cardId) {
         // Check one more time if this card was already liked
-        const isLiked = cardLikes.some(i => i.id === currentUser.id);
+        const isLiked = cardLikes.some(i => i._id === currentUser._id);
         // Send a request to the API and getting the updated card data
-        api.changeLikeCardStatus(cardId, !isLiked).then((newCard) => {
+        api.changeLikeCardStatus(cardId, !isLiked).then((card) => {
+            const newCard = {
+                name: card.name,
+                link: card.link,
+                likes: card.likes,
+                id: card._id,
+                ownerId: card.owner._id
+            }
             // Create a new array based on the existing one and putting a new card into it
             const newCards = cards.map((c) => c.id === cardId ? newCard : c);
             // Update the state
