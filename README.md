@@ -15,6 +15,12 @@ DRAFT 2
 * Fixed the issue with the delete button not rendering properly when a new card is made. I was looping over the data before I converted it the proper format for the Card component.
 * When I fixed the rendering issue with the cards, it solved the "delete" button issue. The owner._id is stored in the card data, so it wasn't necessary to use a Promise.all and/or nested query to fix the issue.
 
+DRAFT 3
+
+* Switched the useEffect in App.js to a chained promise/nested query instead of multiple function calls.
+* Removed unnecessary code from EditProfile
+* Added catch blocks to promises
+
 Link to live site:
 https://ddemosi.github.io/around-react/
 

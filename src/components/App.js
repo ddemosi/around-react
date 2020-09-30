@@ -29,19 +29,14 @@ function App() {
 
 
     //functions for Edit Profile
-    function handleNameChange(value) {
-        setCurrentInfo({ ...currentUser, name: value });
-    }
-    function handleDescriptionChange(value) {
-        setCurrentInfo({ ...currentUser, about: value });
-    }
+
     function handleEditProfileClick(e) {
         toggleEditProfile(true);
     }
     function onUpdateUser(name, description) {
         toggleSaveText(true);
         api.changeProfileInfo({ name: name, about: description }).then(() => {
-            getCurrentUserInfo();
+            setCurrentUserInfo();
         })
             .catch(err => console.log(err));
         toggleSaveText(false);
@@ -56,8 +51,9 @@ function App() {
     function onUpdateAvatar(link) {
         toggleSaveText(true)
         api.updateAvatar(link).then(() => {
-            getCurrentUserInfo();
-        });
+            setCurrentUserInfo();
+        })
+            .catch(err => console.log(err));
         toggleSaveText(false)
         toggleEditAvatar(false);
     }
@@ -124,7 +120,7 @@ function App() {
 
     //function to assign context data
 
-    function getCurrentUserInfo() {
+    function setCurrentUserInfo() {
         api.getUserInfo().then((res) => {
             setCurrentInfo({
                 name: res.name,
@@ -132,7 +128,6 @@ function App() {
                 avatar: res.avatar,
                 _id: res._id
             });
-            return res;
         })
             .catch(err => console.log(err));
     }
@@ -160,21 +155,33 @@ function App() {
 
     //API request for User Info
     useEffect(() => {
-        getCurrentUserInfo()
+        api.getUserInfo().then((res) => {
+            const currentInfo = {
+                name: res.name,
+                about: res.about,
+                avatar: res.avatar,
+                _id: res._id
+            }
+            setCurrentInfo(currentInfo);
+            return currentInfo
+        }).then((info) => {
 
-        api.getCardList().then((res) => {
-            setCards(res.map((card) => {
-
-                return {
-                    name: card.name,
-                    link: card.link,
-                    likes: card.likes,
-                    id: card._id,
-                    ownerId: card.owner._id
-                }
-            }))
+            api.getCardList().then((res) => {
+                setCards(res.map((card) => {
+                    return {
+                        name: card.name,
+                        link: card.link,
+                        likes: card.likes,
+                        id: card._id,
+                        ownerId: card.owner._id,
+                        myId: info._id
+                    }
+                }))
+            })
+                .catch(err => console.log(err))
         })
             .catch(err => console.log(err))
+
     }, [])
 
     return (
@@ -202,11 +209,11 @@ function App() {
                         <EditAvatarPopup onUpdateAvatar={onUpdateAvatar} isOpen={editAvatarIsOpen} onClose={closeAllPopups} isSaving={isSaving} />
 
                         {/* Edit profile form */}
-                        <EditProfilePopup onUpdateUser={onUpdateUser} handleNameChange={handleNameChange} handleDescriptionChange={handleDescriptionChange}
+                        <EditProfilePopup onUpdateUser={onUpdateUser}
                             isOpen={editProfileIsOpen} onClose={closeAllPopups} isSaving={isSaving} />
 
                         {/* Add Card form */}
-                        <AddPlacePopup onUpdateUser={onUpdateUser} handleNameChange={handleNameChange} handleDescriptionChange={handleDescriptionChange}
+                        <AddPlacePopup onUpdateUser={onUpdateUser}
                             isOpen={addCardIsOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} isSaving={isSaving} />
 
                         {/* Confirm delete popup */}
