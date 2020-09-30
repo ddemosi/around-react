@@ -24,7 +24,7 @@ function AddPlacePopup(props) {
                     defaultValue="" minLength="1" />
                 <span id="image-link-error" className="form__error"></span>
             </div>
-            <button type="submit" className="form__save-button form__save-button_card form-width fomr__save-button_disabled">{props.isSaving ? 'Saving...' : 'Create'}</button>
+            <button type="submit" className="form__save-button form__save-button_card form-width">{props.isSaving ? 'Saving...' : 'Create'}</button>
         </PopupWithForm>
     )
 }
